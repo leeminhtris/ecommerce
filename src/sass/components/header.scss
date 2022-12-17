@@ -68,6 +68,7 @@
   &__menu {
     @include flex(center, space-between);
     height: 100%;
+
     &__item {
       font-size: 1.3rem;
       margin: 0 10px;

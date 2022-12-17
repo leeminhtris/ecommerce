@@ -1,6 +1,5 @@
-import { useRef, useEffect } from "react";
+import React, { useRef, useEffect } from "react";
 import { useLocation, Link } from "react-router-dom";
-import React from "react";
 
 function Header() {
   const menu = [
@@ -22,8 +21,9 @@ function Header() {
     },
   ];
 
-  const { pathName } = useLocation();
-  const menuActive = menu.findIndex((i) => i.path === pathName);
+  const { pathname } = useLocation();
+  console.log(pathname);
+  const menuActive = menu.findIndex((i) => i.path === pathname);
 
   const menuRef = useRef(null);
   const menuToggle = () => {

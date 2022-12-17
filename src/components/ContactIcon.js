@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import React from "react";
 
-const ContactIcon = (props) => {
+function ContactIcon(props) {
   return (
     <div className="contact__icon">
       <div className="contact__icon__item">
@@ -21,7 +21,7 @@ const ContactIcon = (props) => {
       </div>
     </div>
   );
-};
+}
 
 ContactIcon.propTypes = {
   facebook: PropTypes.string,

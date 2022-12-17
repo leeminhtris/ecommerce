@@ -1,14 +1,13 @@
-import { useEffect } from "react";
+import React, { useEffect } from "react";
 import PropTypes from "prop-types";
-import React from "react";
 
-const Helmet = (props) => {
+function Helmet(props) {
   document.title = "MT Store - " + props.title;
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
   return <div>{props.children}</div>;
-};
+}
 
 Helmet.propTypes = {
   title: PropTypes.string.isRequired,
