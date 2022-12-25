@@ -1,7 +1,7 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { useDispatch } from "react-redux";
-import { addItem } from "../redux/shopping-cart/productItems";
+import { addItem } from "../redux/shoppingCart/productItems";
 
 import Banner from "./Banner";
 import promotion from "../api/promotion";
@@ -10,14 +10,12 @@ import Button from "./Button";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import numberWithCommas from "../utils/numberWithCommas";
-// import { useUserAuth } from "../context/UserAuthContext";
 
 function ProductView(props) {
   const { product } = props;
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [toggleDesc, setToggleDesc] = useState(false);
   const [quantity, setQuantity] = useState(1);
   const [color, setColor] = useState(undefined);
   const [capacity, setCapacity] = useState(undefined);
@@ -48,14 +46,17 @@ function ProductView(props) {
     if (check()) {
       dispatch(
         addItem({
-          slug: product.slug,
+          id: product.id,
+          name: product.name,
+          imageAvt: product.image[0].imgAvt,
+          brandName: product.brandName,
           color: color,
           capacity: capacity,
           quantity: quantity,
           price: price,
         })
       );
-      toast.success("Thêm vào giỏ hàng thành công.");
+      toast.success("Thêm vào giỏ hàng thành công!");
     }
   };
 
@@ -63,11 +64,14 @@ function ProductView(props) {
     if (check()) {
       dispatch(
         addItem({
-          slug: product.slug,
+          id: product.id,
+          name: product.name,
+          imgageAvt: product.image[0].imgAvt,
+          brandName: product.brandName,
+          price: price,
           color: color,
           capacity: capacity,
           quantity: quantity,
-          price: price,
         })
       );
       navigate("/cart");
@@ -75,12 +79,12 @@ function ProductView(props) {
   };
   return (
     <div className="product">
-      <h1 className="product__view__name">Điện thoại {product.name}</h1>
+      <h1 className="product__view__name">Điện thoại {product.name} </h1>
       <div className="product__view">
         <div className="product__view__left">
           <div className="product__view__left__img">
             <img
-              src={product.image.img01}
+              src={product.image[0].img01}
               alt=""
               className="product__view__left__img--avt"
             />
@@ -148,7 +152,7 @@ function ProductView(props) {
                 Khuyến mãi
               </div>
               <div className="product__view__right__promotion__info__desc">
-                Giá và khuyến mãi dự kiến áp dụng đến 23:00 23/01
+                Giá và khuyến mãi dự kiến áp dụng đến 23:00 | 31/12
               </div>
             </div>
             {promotion.map((item, index) => (
@@ -187,18 +191,9 @@ function ProductView(props) {
           </div>
           <SystemProduct product={product} />
           <div className="product__view__right__desc">
-            <div
-              className={`product__view__right__desc__info ${
-                toggleDesc ? "toggle" : ""
-              }`}
-            >
+            <div className="product__view__right__desc__info ">
               <h3>Thông tin sản phẩm</h3>
               <p dangerouslySetInnerHTML={{ __html: product.description }}></p>
-            </div>
-            <div className="product__view__right__desc__btn">
-              <Button size="sm" onClick={() => setToggleDesc(!toggleDesc)}>
-                {toggleDesc ? "Thu gọn" : "Xem thêm "}
-              </Button>
             </div>
           </div>
         </div>

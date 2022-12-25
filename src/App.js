@@ -3,6 +3,7 @@ import Header from "./components/Header";
 import Footer from "./components/Footer";
 import Router from "./router/router";
 import { ToastContainer } from "react-toastify";
+import "reactjs-popup/dist/index.css";
 
 function App() {
   return (

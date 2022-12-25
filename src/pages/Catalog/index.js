@@ -1,23 +1,23 @@
 import Helmet from "../../components/Helmet";
 import Banner from "../../components/Banner";
-import { useState } from "react";
-import productData from "../../api/productsApi";
-// import api from "../../api";
+import { useState, useEffect } from "react";
 import ProductCard from "../../components/ProductCard";
 import Grid from "../../components/Grid";
+import * as productApi from "../../api/productsApi";
 
 function Catalog() {
   // search
-  const [search, setSearch] = useState("");
-  console.log(search);
 
-  //danh sách sản phẩm
-  const productList = productData.getAllProducts();
-  const [product, setProduct] = useState(productList);
-  console.log(product);
-  const allProducts = () => {
-    setProduct(productList);
+  const [products, setProducts] = useState([]);
+  const getProducts = async () => {
+    const pro = await productApi.getAllProducts();
+    setProducts(pro);
   };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <Helmet title="Sản phẩm">
       <Banner
@@ -26,22 +26,16 @@ function Catalog() {
       />
       <div className="catalog">
         <div className="catalog__search">
-          <input
-            type="text"
-            placeholder="Tìm kiếm..."
-            onChange={(e) => {
-              setSearch(e.target.value);
-            }}
-          />
+          <input type="text" placeholder="Tìm kiếm..." />
           <i className="bx bx-search"></i>
         </div>
 
         <div className="catalog__filter">
-          <button onChange={allProducts}>Tất cả</button>
+          <button>Tất cả</button>
         </div>
         <div className="catalog__content">
           <Grid col={4} mdCol={2} smCol={1}>
-            {productData.getAllProducts().map((item, index) => (
+            {products.map((item, index) => (
               <ProductCard key={index.id} data={item} />
             ))}
           </Grid>
@@ -50,4 +44,5 @@ function Catalog() {
     </Helmet>
   );
 }
+
 export default Catalog;

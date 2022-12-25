@@ -4,12 +4,13 @@ import numberWithCommas from "../utils/numberWithCommas";
 
 function ProductCard(props) {
   const { data } = props;
+  console.log(data);
   return (
     <div className="product__card">
       <div className="product__card__item">
-        <Link to={`/catalog/${data.slug}`}>
+        <Link to={`/catalog/${data.id}`}>
           <div className="product__card__item__img">
-            <img src={data.image.imgAvt} alt="" />
+            <img src={data.image[0].imgAvt} alt="" />
           </div>
 
           <div className="product__card__item__info">

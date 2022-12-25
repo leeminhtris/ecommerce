@@ -1,3 +1,5 @@
+import React, { useEffect, useState } from "react";
+
 import Banner from "../../components/Banner";
 import Helmet from "../../components/Helmet";
 import Slider from "../../components/Slider";
@@ -5,10 +7,22 @@ import Section, { SectionBody, SectionTitle } from "../../components/Section";
 import Policy from "../../components/Policy";
 import policy from "../../api/policy";
 import Grid from "../../components/Grid";
-import productData from "../../api/productsApi";
+
 import ProductCard from "../../components/ProductCard";
 
+import * as productApi from "../../api/productsApi";
+
 function Home() {
+  const [products, setProducts] = useState([]);
+  const getProducts = async () => {
+    const pro = await productApi.getAllProducts();
+    setProducts(pro);
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   return (
     <Helmet title="Trang chủ">
       <Slider />
@@ -31,7 +45,7 @@ function Home() {
         <SectionTitle>Sản phẩm mới</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={40}>
-            {productData.getProducts(4).map((item, index) => (
+            {products.map((item, index) => (
               <ProductCard key={index.id} data={item} />
             ))}
           </Grid>
@@ -42,7 +56,7 @@ function Home() {
         <SectionTitle>Sản phẩm bán chạy nhất</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={40}>
-            {productData.getProducts(4).map((item, index) => (
+            {products.map((item, index) => (
               <ProductCard key={index.id} data={item} />
             ))}
           </Grid>
@@ -57,7 +71,7 @@ function Home() {
         <SectionTitle>Sản phẩm liên quan</SectionTitle>
         <SectionBody>
           <Grid col={4} mdCol={2} smCol={1} gap={40}>
-            {productData.getProducts(8).map((item, index) => (
+            {products.map((item, index) => (
               <ProductCard key={index.id} data={item} />
             ))}
           </Grid>

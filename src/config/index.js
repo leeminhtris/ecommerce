@@ -1,5 +1,4 @@
-import axios from "axios";
-
-export default axios.create({
-  BASE_URL: `http://localhost:8080/`,
-});
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+  BASE_URL: "http://localhost:8080",
+};

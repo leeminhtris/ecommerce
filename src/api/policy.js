@@ -21,26 +21,4 @@ const policy = [
   },
 ];
 
-export const policyProductView = [
-  {
-    id: "1",
-    description:
-      "Hư gì đổi nấy 12 tháng tại 3012 siêu thị toàn quốc (miễn phí tháng đầu)",
-    icon: "bx bx-transfer-alt",
-  },
-  {
-    id: "2",
-
-    description: "Bảo hành chính hãng điện thoại 1 năm",
-    icon: "bx bx-check-shield",
-  },
-  {
-    id: "3",
-
-    description:
-      "Bộ sản phẩm gồm: Hộp, Sách hướng dẫn, Cây lấy sim, Cáp Type C, Củ sạc rời đầu Type A",
-    icon: "bx bx-box",
-  },
-];
-
 export default policy;

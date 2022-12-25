@@ -12,9 +12,6 @@ html {
   @include tablet {
     font-size: 80% !important;
   }
-  // @include mobile {
-  //   font-size: 70% !important;
-  // }
 }
 body {
   font-family: "Roboto", sans-serif;
@@ -112,35 +109,4 @@ a:hover {
   display: block;
   color: rgb(233, 42, 42);
   margin-bottom: 10px;
-}
-.google__btn {
-  & > div {
-    margin-bottom: 10px;
-    width: 100% !important;
-    @include mobile {
-      font-size: 14px;
-      // padding: 8px 10px;
-    }
-  }
-}
-.facebook__btn {
-  span {
-    button {
-      width: 100%;
-      padding: 15px 10px;
-      font-size: 16px;
-      font-weight: 500;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
-      color: #fff;
-      background-color: rgb(66, 133, 244);
-      outline: none;
-      border: none;
-      @include mobile {
-        font-size: 14px;
-        padding: 8px 10px;
-      }
-    }
-  }
 }
