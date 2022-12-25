@@ -49,11 +49,10 @@ function ProductView(props) {
           id: product.id,
           name: product.name,
           imageAvt: product.image[0].imgAvt,
-          brandName: product.brandName,
+          price: price,
           color: color,
           capacity: capacity,
           quantity: quantity,
-          price: price,
         })
       );
       toast.success("Thêm vào giỏ hàng thành công!");
@@ -66,8 +65,7 @@ function ProductView(props) {
         addItem({
           id: product.id,
           name: product.name,
-          imgageAvt: product.image[0].imgAvt,
-          brandName: product.brandName,
+          imageAvt: product.image[0].imgAvt,
           price: price,
           color: color,
           capacity: capacity,

@@ -13,6 +13,8 @@ function CartItem(props) {
   const removeCartItem = () => {
     dispatch(removeItem(item));
   };
+
+  console.log(item.imageAvt);
   return (
     <div className="cart__item">
       <div className="cart__item__img">

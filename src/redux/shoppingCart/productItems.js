@@ -41,7 +41,7 @@ export const productItemsSlice = createSlice({
             parseInt(newItem.quantity) * parseInt(newItem.price)
           );
           otherProductsExistedInCart.unshift(product);
-          products = Object.assign([], otherProductsExistedInCart);
+          products = Object.assign([], otherProductsExistedInCart); //sao chép toàn bộ thuộc tính từ other... vào mảng
         } else {
           console.log("case san pham moi de update so luong va tien");
           // case san pham moi
@@ -49,7 +49,6 @@ export const productItemsSlice = createSlice({
             id: newItem.id,
             name: newItem.name,
             imageAvt: newItem.imageAvt,
-            brandName: newItem.brandName,
             price: newItem.price,
             color: newItem.color,
             capacity: newItem.capacity,
@@ -66,7 +65,6 @@ export const productItemsSlice = createSlice({
           id: newItem.id,
           name: newItem.name,
           imageAvt: newItem.imageAvt,
-          brandName: newItem.brandName,
           price: newItem.price,
           color: newItem.color,
           capacity: newItem.capacity,
