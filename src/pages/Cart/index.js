@@ -34,11 +34,21 @@ function Cart() {
     console.log("asdsad");
   }
 
-  const ContinueComponent = () => {
+  const OlderComponent = () => {
     return (
-      <Button size="block">
-        <Link to="/catalog">Tiếp tục mua hàng</Link>
-      </Button>
+      <Popup trigger={<Button size="block">Đặt hàng</Button>} modal>
+        <div>
+          Tên *
+          <input type="text" name="number" placeholder="Tên" />
+        </div>
+        <div>
+          Số điện thoại *
+          <input type="text" name="number" placeholder="Số điện thoại" />
+        </div>
+        <button type="submit">
+          <span>Xác nhận</span>
+        </button>
+      </Popup>
     );
   };
 
@@ -48,8 +58,6 @@ function Cart() {
         img="https://magiamgialazada.vn/wp-content/uploads/2018/01/voucher-bi-mat-lazada-khuyen-mai-tet-am-lich-2018-truyen-nhan-sam-tet.png"
         marginBottom={50}
       />
-      {/* {products.length > 0 ? (
-        <> */}
       <div className="cart">
         <div className="cart__list">
           {products.map((item, index) => (
@@ -65,19 +73,13 @@ function Cart() {
             </div>
           </div>
           <div className="cart__info__btn">
-            <Popup trigger={<Button size="block">Đặt hàng</Button>} modal>
-              <span> Modal content </span>
-            </Popup>
+            {products.length > 0 ? <OlderComponent></OlderComponent> : ""}
             <Button size="block">
               <Link to="/catalog">Tiếp tục mua hàng</Link>
             </Button>
           </div>
         </div>
       </div>
-      {/* </>
-      // ) : (
-      //   <ContinueComponent></ContinueComponent>
-      // )} */}
     </Helmet>
   );
 }
